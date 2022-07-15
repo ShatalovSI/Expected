@@ -66,7 +66,7 @@ namespace nonstd
     }
 
     // Equality operators
-    template<class E2> // ??? The expression x.value()== y.value() is well-formed and its result is convertible to bool
+    template<class E2>
     friend constexpr bool operator==(const unexpected& x, const unexpected<E2>& y)
     {
       return x.value() == y.value();
