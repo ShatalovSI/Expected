@@ -46,7 +46,7 @@ namespace nonstd
     template <typename T, typename E>
     requires std::is_move_constructible_v<T>
           && std::is_move_constructible_v<E>
-    constexpr expected(expected&& rhs) noexcept(" ") : has_val(rhs.has_val)// Что в noexcept?
+    constexpr expected(expected&& rhs) noexcept(" ") : has_val(rhs.has_val)
     {
       if (has_val)
         new(&val) T(std::move(rhs.val));
