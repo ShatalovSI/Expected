@@ -139,7 +139,7 @@ namespace nonstd
     }
 
     // Equality operators
-    template<class E2> 
+    template<class E2>
     friend constexpr bool operator==(const unexpected& x, const unexpected<E2>& y)
     {
       return x.value() == y.value();
@@ -151,9 +151,5 @@ namespace nonstd
   {
     x.swap(y);
   }
-
-  template<class E>
-  unexpected(E) -> unexpected<E>;
+  template<class E> unexpected(E)->unexpected<E>;
 }
-
-//transform, and_

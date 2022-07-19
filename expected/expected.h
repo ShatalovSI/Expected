@@ -53,9 +53,15 @@ namespace nonstd
     constexpr expected(const expected& rhs) = default;
     
     template <typename T, typename E>
-      requires std::is_move_constructible_v<T>
-            && std::is_move_constructible_v<E>
-    constexpr expected(expected &&rhs) noexcept = default;
+    requires std::is_move_constructible_v<T>
+          && std::is_move_constructible_v<E>
+    constexpr expected(expected&& rhs) noexcept(" ") : has_val(rhs.has_val)
+    {
+      if (has_val)
+        new(&val) T(std::move(rhs.val));
+      else
+        new(&unex) E(std::move(rhs.unex));
+    }
 
     template<class U, class G>
       requires std::is_constructible_v<T, const U&>
