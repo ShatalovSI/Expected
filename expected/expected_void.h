@@ -298,7 +298,7 @@ namespace nonstd
       return std::move(unex);
     }
 
-    //Expected equality operators ??
+    //Expected equality operators
     template<class T2, class E2>
     requires std::is_void_v<T2>
     friend constexpr bool operator==(const expected& x, const expected<T2, E2>& y)

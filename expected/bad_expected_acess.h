@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-//has_val or has_value()
 namespace nonstd
 {
   template<typename E>
